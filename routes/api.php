@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('user',[UserController::class,'index']);
 
-Route::post('user/login',[UserController::class,'login']);
+Route::post('user',[UserController::class,'login']);
 
-Route::post('user/register',[UserController::class,'register']);
-
-Route::put('user/update/{token}',[UserController::class,'update']);
+Route::put('user/{user}',[UserController::class,'update']);

@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserRessource;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class UserController extends Controller
+{
+
+//    recupere tous les utilisateurs
+    public function index()
+    {
+        return UserRessource::collection(User::all());
+    }
+
+//connexion d'un utilisateur
+    public function login()
+    {
+        $isconnect = auth()->attempt([
+            'telephone1' => request('telephone1'),
+            'password' => request('password'),
+        ]);
+
+        if ($isconnect) {
+
+            return
+                response([
+                    'success' => 'utilisateur conecté avec success',
+                    //                'token'=>Auth::user()->api_token
+                ], 200);
+        } else {
+            return
+                response([
+                    'error' => 'aucun utilisateur trouvé'
+                ], 404);
+        }
+    }
+
+    //modification des informations d'un utilisateur
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+//        dd($request->name);
+
+//        $info = new UpdateUserProfileInformation();
+//        if($info->update($user, (array)$request)){
+//            return new UserRessource($user);
+//        }
+
+        $user->name = $request->name;
+        $user->prenom = $request->prenom;
+        $user->telephone1 = $request->telephone1;
+        $user->telephone2 = $request->telephone2;
+        $user->email = $request->email;
+//        $user->profile_photo_url = $request->profile_photo_url;
+        if ($user->save()){
+            return new UserRessource($user);
+        }
+
+
+    }
+}

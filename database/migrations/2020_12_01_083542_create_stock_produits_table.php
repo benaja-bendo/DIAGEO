@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypeBarsTable extends Migration
+class CreateStockProduitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateTypeBarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_bars', function (Blueprint $table) {
+        Schema::create('stock_produits', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
+            $table->integer('qte');
+            $table->integer('date');
+            $table->foreignId('point_vente_type_produit_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateTypeBarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_bars');
+        Schema::dropIfExists('stock_produits');
     }
 }

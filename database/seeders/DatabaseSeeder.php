@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pays;
+use App\Models\User;
+use App\Models\Ville;
+use Database\Factories\VilleFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,8 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Pays::factory(10)->create();
-//        \App\Models\Villes::factory(20)->create();
+//        User::factory(10)->create();
+//        Pays::factory(10)->create();
+//        Ville::factory(10)->create();
     }
 }

@@ -12,4 +12,9 @@ class Pays extends Model
     protected $fillable=[
       'nom'
     ];
+
+    public function ville()
+    {
+        return $this->hasMany('App\Models\Ville');
+    }
 }

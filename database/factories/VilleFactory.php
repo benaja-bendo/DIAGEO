@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Pays;
+use App\Models\Ville;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PaysFactory extends Factory
+class VilleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Pays::class;
+    protected $model = Ville::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class PaysFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->country
+            'nom' =>$this->faker->city,
+            'pays_id'=>11
         ];
     }
 }

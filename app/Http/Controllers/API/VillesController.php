@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PaysRessource;
-use App\Models\Pays;
+use App\Http\Resources\VilleRessource;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 
-class PaysController extends Controller
+class VillesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,23 +16,22 @@ class PaysController extends Controller
      */
     public function index()
     {
-        return PaysRessource::collection(Pays::all());
-//        $pays = Pays::all()
+        return VilleRessource::collection(Ville::all());
     }
-
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return PaysRessource
+     * @return VilleRessource
      */
     public function store(Request $request)
     {
-        $pays = new Pays();
-        $pays->nom =$request->nom;
-        if ($pays->save()){
-            return new PaysRessource($pays);
+        $ville = new Ville();
+        $ville->nom = $request->nom;
+        $ville->pays_id = $request->pays_id;
+        if ($ville->save()){
+            return new VilleRessource($ville);
         }
     }
 
@@ -41,17 +39,17 @@ class PaysController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return PaysRessource
+     * @return VilleRessource
      */
     public function show($id)
     {
-        $pays = Pays::find($id);
-        if($pays){
-            return new PaysRessource($pays);
+        $ville = Ville::find($id);
+        if ($ville){
+            return new VilleRessource($ville);
         }
         else{
             return response([
-                'statut'=>'aucunne ressource'
+                'statut'=> 0
             ],404);
         }
     }
@@ -61,14 +59,14 @@ class PaysController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return PaysRessource
+     * @return VilleRessource
      */
     public function update(Request $request, $id)
     {
-        $pays = Pays::findOrFail($id);
-        $pays->nom = $request->nom;
-        if ($pays->save()){
-            return new PaysRessource($pays);
+        $ville = Ville::findOrFail($id);
+        $ville->nom = $request->nom;
+        if ($ville->save()){
+            return new VilleRessource($ville);
         }else{
             return response([
                 'statut'=> 0
@@ -84,8 +82,8 @@ class PaysController extends Controller
      */
     public function destroy($id)
     {
-        $pays = Pays::findOrFail($id);
-        if ($pays->delete()){
+        $ville = Ville::findOrFail($id);
+        if ($ville->delete()){
             return response([
                 'statut'=> 1
             ],200);

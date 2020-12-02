@@ -30,13 +30,13 @@ class UserController extends Controller
 
             return
                 response([
-                    'success' => 'utilisateur conecté avec success',
+                    'statut' => 1,
                     //                'token'=>Auth::user()->api_token
                 ], 200);
         } else {
             return
                 response([
-                    'error' => 'aucun utilisateur trouvé'
+                    'statut' => 0
                 ], 404);
         }
     }

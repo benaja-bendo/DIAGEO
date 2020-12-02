@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\PaysController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::get('user',[UserController::class,'index']);
 Route::post('user',[UserController::class,'login']);
 
 Route::put('user/{user}',[UserController::class,'update']);
+
+Route::resource('pays',PaysController::class);

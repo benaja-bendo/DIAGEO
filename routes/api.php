@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ArrondissementController;
+use App\Http\Controllers\API\FabricantController;
 use App\Http\Controllers\API\PaysController;
 use App\Http\Controllers\API\QuartierController;
 use App\Http\Controllers\API\UserController;
@@ -35,4 +36,6 @@ Route::resource('villes',VillesController::class);
 Route::resource('arrondissements',ArrondissementController::class);
 
 Route::resource('quartiers',QuartierController::class);
+
+Route::resource('quartiers',FabricantController::class);
 

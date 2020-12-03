@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Arrondissement;
+use App\Models\Fabricant;
 use App\Models\Pays;
 use App\Models\Quartier;
 use App\Models\User;
@@ -20,7 +21,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Quartier::factory(100)->create();
+//        Fabricant::factory(10)->create();
+//        Quartier::factory(100)->create();
 //        Arrondissement::factory(10)->create();
 //        User::factory(10)->create();
 //        Pays::factory(10)->create();

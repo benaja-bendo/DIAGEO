@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\ArrondissementController;
 use App\Http\Controllers\API\PaysController;
+use App\Http\Controllers\API\QuartierController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VillesController;
 use Illuminate\Http\Request;
@@ -32,4 +33,6 @@ Route::resource('pays',PaysController::class);
 Route::resource('villes',VillesController::class);
 
 Route::resource('arrondissements',ArrondissementController::class);
+
+Route::resource('quartiers',QuartierController::class);
 

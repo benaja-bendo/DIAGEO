@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArrondissementRessource;
-use App\Models\Arrondissement;
+use App\Http\Resources\QuartierRessource;
+use App\Models\Quartier;
 use Illuminate\Http\Request;
 
-class ArrondissementController extends Controller
+class QuartierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,23 +16,22 @@ class ArrondissementController extends Controller
      */
     public function index()
     {
-        return ArrondissementRessource::collection(Arrondissement::all());
+        return QuartierRessource::collection(Quartier::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return ArrondissementRessource
+     * @return QuartierRessource
      */
     public function store(Request $request)
     {
-        $arrondissement = new Arrondissement();
-        $arrondissement->numero = $request->numero;
-        $arrondissement->nom_arrondissement = $request->nom_arrondissement;
-        $arrondissement->ville_id = $request->ville_id;
-        if ($arrondissement->save()) {
-            return new ArrondissementRessource($arrondissement);
+        $quartier = new Quartier();
+        $quartier->nom = $request->nom;
+        $quartier->arrondissement_id = $request->arrondissement_id;
+        if ($quartier->save()) {
+            return new QuartierRessource($quartier);
         } else {
             return response([
                 'statut' => 0
@@ -44,13 +43,13 @@ class ArrondissementController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return ArrondissementRessource
+     * @return QuartierRessource
      */
     public function show($id)
     {
-        $arrondissement = Arrondissement::find($id);
-        if ($arrondissement) {
-            return new ArrondissementRessource($arrondissement);
+        $quartier = QuartierRessource::find($id);
+        if ($quartier) {
+            return new QuartierRessource($quartier);
         } else {
             return response([
                 'statut' => 0
@@ -63,16 +62,15 @@ class ArrondissementController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return ArrondissementRessource
+     * @return QuartierRessource
      */
     public function update(Request $request, $id)
     {
-        $arrondissement = Arrondissement::findOrFail($id);
-        $arrondissement->numero = $request->numero;
-        $arrondissement->nom_arrondissement = $request->nom_arrondissement;
-        $arrondissement->ville_id = $request->ville_id;
-        if ($arrondissement->save()) {
-            return new ArrondissementRessource($arrondissement);
+        $quartier = Quartier::findOrFail($id);
+        $quartier->nom = $request->nom;
+        $quartier->arrondissement_id = $request->arrondissement_id;
+        if ($quartier->save()) {
+            return new QuartierRessource($quartier);
         } else {
             return response([
                 'statut' => 0
@@ -88,8 +86,8 @@ class ArrondissementController extends Controller
      */
     public function destroy($id)
     {
-        $arrondissement = Arrondissement::findOrFail($id);
-        if ($arrondissement->delete()) {
+        $quartier = Quartier::findOrFail($id);
+        if ($quartier->delete()) {
             return response([
                 'statut' => 1
             ], 200);

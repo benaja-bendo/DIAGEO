@@ -19,4 +19,9 @@ class Arrondissement extends Model
     {
         return $this->belongsTo('App\Models\Ville');
     }
+
+    public function quartier()
+    {
+        return $this->hasMany('App\Models\Quartier');
+    }
 }

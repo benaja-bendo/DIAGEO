@@ -18,4 +18,9 @@ class Ville extends Model
     {
         return $this->belongsTo('App\Models\Pays');
     }
+
+    public function arrondissement()
+    {
+        return $this->hasMany('App\Models\Arrondissement');
+    }
 }

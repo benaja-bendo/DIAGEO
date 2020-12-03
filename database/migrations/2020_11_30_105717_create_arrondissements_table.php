@@ -16,7 +16,7 @@ class CreateArrondissementsTable extends Migration
         Schema::create('arrondissements', function (Blueprint $table) {
             $table->id();
             $table->integer('numero');
-            $table->integer('nom_arrondissement');
+            $table->string('nom_arrondissement');
             $table->foreignId('ville_id')
                 ->constrained()
                 ->onDelete('cascade');

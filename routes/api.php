@@ -37,5 +37,5 @@ Route::resource('arrondissements',ArrondissementController::class);
 
 Route::resource('quartiers',QuartierController::class);
 
-Route::resource('quartiers',FabricantController::class);
+Route::resource('fabricants',FabricantController::class);
 

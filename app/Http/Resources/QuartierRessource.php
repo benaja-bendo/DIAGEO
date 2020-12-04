@@ -18,7 +18,7 @@ class QuartierRessource extends JsonResource
         return [
             'id'=>$this->id,
             'nom'=>$this->nom,
-            'arrondissement_id'=>$this->arrondissement_id
+//            'arrondissement_id'=>$this->arrondissement_id
         ];
     }
 }

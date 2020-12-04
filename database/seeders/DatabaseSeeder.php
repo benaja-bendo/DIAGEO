@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        Fabricant::factory(10)->create();
-//        Quartier::factory(100)->create();
-//        Arrondissement::factory(10)->create();
 //        User::factory(10)->create();
-//        Pays::factory(10)->create();
-//        Ville::factory(10)->create();
+        Pays::factory(10)->create();
+        Ville::factory(10)->create();
+        Arrondissement::factory(10)->create();
+        Quartier::factory(100)->create();
+        Fabricant::factory(10)->create();
     }
 }

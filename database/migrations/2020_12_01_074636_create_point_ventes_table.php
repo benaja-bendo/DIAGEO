@@ -17,9 +17,8 @@ class CreatePointVentesTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('telephone1');
-            $table->string('telephone2');
-            $table->string('email');
-            $table->string('type');
+            $table->string('telephone2')->nullable();
+            $table->string('email')->nullable();
             $table->foreignId('geolocalisation_id')
                 ->constrained()
                 ->onDelete('cascade');

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Geolocalisation extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'adresse',
+        'latitude',
+        'longitude',
+        'quartier_id',
+    ];
 }

@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\Arrondissement;
 use App\Models\Fabricant;
 use App\Models\Pays;
+use App\Models\Point_vente;
 use App\Models\Quartier;
+use App\Models\Type_point_vente;
 use App\Models\User;
 use App\Models\Ville;
 use Database\Factories\QuartierFactory;
@@ -22,10 +24,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 //        User::factory(10)->create();
-        Pays::factory(10)->create();
-        Ville::factory(10)->create();
-        Arrondissement::factory(10)->create();
-        Quartier::factory(100)->create();
-        Fabricant::factory(10)->create();
+//        Pays::factory(10)->create();
+//        Ville::factory(10)->create();
+//        Arrondissement::factory(10)->create();
+//        Quartier::factory(100)->create();
+//        Fabricant::factory(10)->create();
+        Point_vente::factory(10)->create();
     }
 }

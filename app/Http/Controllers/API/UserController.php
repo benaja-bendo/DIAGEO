@@ -8,6 +8,7 @@ use App\Http\Resources\UserRessource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,6 +17,25 @@ class UserController extends Controller
     public function index()
     {
         return UserRessource::collection(User::all());
+    }
+
+//    creation d'un utilisateur
+    public function register(Request $request){
+        $user = new User();
+        $user->name = $request->name;
+        $user->prenom = $request->prenom;
+        $user->email = $request->email;
+        $user->telephone1 = $request->telephone1;
+        $user->telephone2 = $request->telephone2;
+        $user->role = 'gerant';
+        $user->password = Hash::make('password');
+        if ($user->save()){
+            return new UserRessource($user);
+        }else {
+            return response([
+                'statut' => 0
+            ], 404);
+        }
     }
 
 //connexion d'un utilisateur

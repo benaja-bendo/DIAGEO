@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\ArrondissementController;
 use App\Http\Controllers\API\FabricantController;
 use App\Http\Controllers\API\PaysController;
+use App\Http\Controllers\API\Point_ventesController;
 use App\Http\Controllers\API\QuartierController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VillesController;
@@ -27,6 +28,8 @@ Route::get('user',[UserController::class,'index']);
 
 Route::post('user',[UserController::class,'login']);
 
+Route::post('user/register',[UserController::class,'register']);
+
 Route::put('user/{user}',[UserController::class,'update']);
 
 Route::resource('pays',PaysController::class);
@@ -38,4 +41,7 @@ Route::resource('arrondissements',ArrondissementController::class);
 Route::resource('quartiers',QuartierController::class);
 
 Route::resource('fabricants',FabricantController::class);
+
+
+Route::resource('PointVentes',Point_ventesController::class);
 
